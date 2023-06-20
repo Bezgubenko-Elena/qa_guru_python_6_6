@@ -41,9 +41,9 @@ def test_dark_theme_by_time_and_user_choice():
 
 
 def test_find_suitable_user():
-    """
-    Найдите нужного пользователя по условиям в списке пользователей
-    """
+
+    # Найдите нужного пользователя по условиям в списке пользователей
+
     users = [
         {"name": "Oleg", "age": 32},
         {"name": "Sergey", "age": 24},
@@ -82,23 +82,28 @@ def test_find_suitable_user():
 # >>> open_browser(browser_name="Chrome")
 # "Open Browser [Chrome]"
 
+def print_name(func_name, *args):
+    return (f"{func_name.__name__.replace('_', ' ').title()} [{', '.join(args)}]")
 
 def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
-
+    
 
 def open_browser(browser_name):
-    actual_result = None
+    actual_result = print_name(open_browser, browser_name)
+    print(actual_result)
     assert actual_result == "Open Browser [Chrome]"
 
 
 def go_to_companyname_homepage(page_url):
-    actual_result = None
+    actual_result = print_name(go_to_companyname_homepage, page_url)
+    print(actual_result)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = None
+    actual_result = actual_result = print_name(find_registration_button_on_login_page, page_url, button_text)
+    print(actual_result)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
